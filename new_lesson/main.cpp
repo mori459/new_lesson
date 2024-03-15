@@ -7,232 +7,42 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	int number, thausand, hundred, tens, unit;
+	int number;
 
 	while (true)
 	{
-		std::cout << "¬ведите число от 1 до 9999: ";
+		std::cout << "¬ведите число: ";
 		std::cin >> number;
-		if (number < 1 || number > 9999)
+		int iter = 10,  pow = 1, zero_count = 0, curr_digit;
+		double num_length = 1, summ = 0;
+
+		while (number / iter != 0)
 		{
-			std::cerr << "Error: incorrect input choice\n";
-			continue;
+			num_length++;
+			iter = iter * 10;
 		}
 
-		thausand = number / 1000;
-		hundred = number % 1000 / 100;
-		//std::cout << hundred;
-		tens = number % 100 / 10;
-		//std::cout << tens;
-		unit = number % 10;
-		//unit = number - tens - 
-
-		if (thausand == 1) // тыс€чи
+		for (int i = 0; i < num_length; i++)
 		{
-			std::cout << "ќдна тыс€ча ";
+			pow = pow * 10;
 		}
-		else if (thausand == 2)
+		for (int i = 0; i < num_length; i++)
 		{
-			std::cout << "ƒве тыс€чи ";
-		}
-		else if (thausand == 3)
-		{
-			std::cout << "“ри тыс€чи ";
-		}
-		else if (thausand == 4)
-		{
-			std::cout << "„етыре тыс€чи ";
-		}
-		else if (thausand == 5)
-		{
-			std::cout << "ѕ€ть тыс€чь ";
-		}
-		else if (thausand == 6)
-		{
-			std::cout << "Ўесть тыс€чь ";
-		}
-		else if (thausand == 7)
-		{
-			std::cout << "—емь тыс€чь ";
-		}
-		else if (thausand == 8)
-		{
-			std::cout << "¬осемь тыс€чь ";
-		}
-		else if (thausand == 9)
-		{
-			std::cout << "ƒев€ть тыс€чь ";
-		}
-
-		if (hundred == 1) // сотни
-		{
-			std::cout << "сто ";
-		}
-		else if (hundred == 2)
-		{
-			std::cout << "двести ";
-		}
-		else if (hundred == 3)
-		{
-			std::cout << "триста ";
-		}
-		else if (hundred == 4)
-		{
-			std::cout << "четыреста ";
-		}
-		else if (hundred == 5)
-		{
-			std::cout << "п€тьсот ";
-		}
-		else if (hundred == 6)
-		{
-			std::cout << "шестьсот ";
-		}
-		else if (hundred == 7)
-		{
-			std::cout << "семьсот ";
-		}
-		else if (hundred == 8)
-		{
-			std::cout << "восемьсот ";
-		}
-		else if (hundred == 9)
-		{
-			std::cout << "дев€тьсот ";
-		}
-		
-		do
-		{
-			if (tens == 1)
+			curr_digit = number % pow / (pow / 10);
+			if (curr_digit == 0)
 			{
-				if (unit == 1) // 10
-				{
-					std::cout << "одиннадцать рублей\n";
-					break;
-				}
-				else if (unit == 2)
-				{
-					std::cout << "двенадцать рублей\n";
-					break;
-				}
-				else if (unit == 3)
-				{
-					std::cout << "тринадцать рублей\n";
-					break;
-				}
-				else if (unit == 4)
-				{
-					std::cout << "четырнадцать рублей\n";
-					break;
-				}
-				else if (unit == 5)
-				{
-					std::cout << "п€тнадцать рублей\n";
-					break;
-				}
-				else if (unit == 6)
-				{
-					std::cout << "шестнадцать рублей\n";
-					break;
-				}
-				else if (unit == 7)
-				{
-					std::cout << "семнадцать рублей\n";
-					break;
-				}
-				else if (unit == 8)
-				{
-					std::cout << "восемнадцать рублей\n";
-					break;
-				}
-				else if (unit == 9)
-				{
-					std::cout << "дев€тнадцать рублей\n";
-					break;
-				}
-				else if (unit == 0)
-				{
-					std::cout << "дес€ть рублей\n";
-					break;
-				}
+				zero_count++;
 			}
-			else if (tens == 2) // 20 - 90
+			else
 			{
-				std::cout << "двадцать ";
-			}
-			else if (tens == 3)
-			{
-				std::cout << "тридцать ";
-			}
-			else if (tens == 4)
-			{
-				std::cout << "сорок ";
-			}
-			else if (tens == 5)
-			{
-				std::cout << "п€тьдес€т ";
-			}
-			else if (tens == 6)
-			{
-				std::cout << "шестьдес€т ";
-			}
-			else if (tens == 7)
-			{
-				std::cout << "семьдес€т ";
-			}
-			else if (tens == 8)
-			{
-				std::cout << "восемьдест ";
-			}
-			else if (tens == 9)
-			{
-				std::cout << "дев€носто ";
+				summ += curr_digit;
 			}
 
-			if (unit == 1) // единицы
-			{
-				std::cout << "один рубль\n";
-			}
-			else if (unit == 2)
-			{
-				std::cout << "два рубл€\n";
-			}
-			else if (unit == 3)
-			{
-				std::cout << "три рубл€\n";
-			}
-			else if (unit == 4)
-			{
-				std::cout << "четыре рубл€\n";
-			}
-			else if (unit == 5)
-			{
-				std::cout << "п€ть рублей\n";
-			}
-			else if (unit == 6)
-			{
-				std::cout << "шесть рублей\n";
-			}
-			else if (unit == 7)
-			{
-				std::cout << "семь рублей\n";
-			}
-			else if (unit == 8)
-			{
-				std::cout << "восемь рублей\n";
-			}
-			else if (unit == 9)
-			{
-				std::cout << "дев€ть рублей\n";
-			}
-			else if (unit == 0)
-			{
-				std::cout << "рублей\n";
-			}
+			pow = pow / 10;
+		}
+		double arif = summ / num_length;
 
-			break;
-		} while (true);
-
+		std::cout << "÷ыфр: " << num_length << "\n" << "—умма: " << summ << "\n" << "Ќулей: " << zero_count << "\n" << "јриф: " << arif << "\n";
 	}
 
 
